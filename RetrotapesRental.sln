@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36414.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Retrotapes.WEB", "RetrotapesRental\Retrotapes.WEB.csproj", "{44C1E3F1-B21A-437F-8C9A-70DBD6AF2BF2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Retrotapes.DAL", "Retrotapes.DAL\Retrotapes.DAL.csproj", "{B955B4E4-2F18-400F-8C7B-93F4C66FEA9A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{44C1E3F1-B21A-437F-8C9A-70DBD6AF2BF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44C1E3F1-B21A-437F-8C9A-70DBD6AF2BF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44C1E3F1-B21A-437F-8C9A-70DBD6AF2BF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44C1E3F1-B21A-437F-8C9A-70DBD6AF2BF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B955B4E4-2F18-400F-8C7B-93F4C66FEA9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B955B4E4-2F18-400F-8C7B-93F4C66FEA9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B955B4E4-2F18-400F-8C7B-93F4C66FEA9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B955B4E4-2F18-400F-8C7B-93F4C66FEA9A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {36BD1B23-A47D-4004-8CB8-A9EEEFC243DF}
+	EndGlobalSection
+EndGlobal
