@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Retrotapes.DAL.Models
 {
@@ -7,7 +8,7 @@ namespace Retrotapes.DAL.Models
     {
         public int StoreId { get; set; }
 
-        public byte ManagerStaffId { get; set; }
+        public int ManagerStaffId { get; set; }
 
         public int AddressId { get; set; }
 
@@ -19,6 +20,7 @@ namespace Retrotapes.DAL.Models
 
         public virtual ICollection<Inventory> Inventories { get; set; } = new List<Inventory>();
 
+        [ForeignKey("ManagerStaffId")]
         public virtual Staff ManagerStaff { get; set; } = null!;
 
         public virtual ICollection<Staff> Staff { get; set; } = new List<Staff>();

@@ -13,7 +13,6 @@ namespace Retrotapes.DAL.Data
     {
         public SakilaDbContext(DbContextOptions<SakilaDbContext> options): base(options) { }
 
-
         public DbSet<Actor> Actors { get; set; }
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Booking> Bookings { get; set; }
@@ -34,10 +33,11 @@ namespace Retrotapes.DAL.Data
         public DbSet<Rental> Rentals { get; set; }
         public DbSet<SalesByFilmCategory> SalesByFilmCategories { get; set; }
         public DbSet<SalesByStore> SalesByStores { get; set; }
-        public DbSet<Staff> Staffs { get; set; }
+        public DbSet<Staff> staff { get; set; }
         public DbSet<StaffList> StaffLists { get; set; }
         public DbSet<Store> Stores { get; set; }
         public DbSet<FilmImage> FilmImages { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

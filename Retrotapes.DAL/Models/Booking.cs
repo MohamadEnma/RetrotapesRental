@@ -37,8 +37,8 @@ public class Booking
     [MaxLength(20)]
     public string Status { get; set; } = "Reserved"; // Reserved, Active, Returned, Overdue
 
-    [ForeignKey("Staff")]
-    public byte? StaffId { get; set; }
+    [ForeignKey("StaffId")]
+    public int? StaffId { get; set; }
 
     public DateTime LastUpdate { get; set; } = DateTime.Now;
 

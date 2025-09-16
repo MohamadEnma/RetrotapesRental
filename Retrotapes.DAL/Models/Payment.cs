@@ -9,7 +9,7 @@ namespace Retrotapes.DAL.Models
 
         public int CustomerId { get; set; }
 
-        public byte StaffId { get; set; }
+        public int StaffId { get; set; }
 
         public int? RentalId { get; set; }
 

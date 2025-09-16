@@ -5,7 +5,7 @@ namespace Retrotapes.DAL.Models
 {
     public partial class StaffList
     {
-        public byte Id { get; set; }
+        public int Id { get; set; }
 
         public string Name { get; set; } = null!;
 

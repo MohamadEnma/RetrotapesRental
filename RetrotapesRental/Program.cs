@@ -1,14 +1,16 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Retrotapes.DAL.Data;
+using Retrotapes.DAL.Models;
 using Retrotapes.DAL.Repositories;
+using Retrotapes.DAL.Seeder;
 
 
 namespace RetrotapesRental
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -27,11 +29,9 @@ namespace RetrotapesRental
             builder.Services.AddDbContext<SakilaDbContext>(options =>
                 options.UseSqlServer(sakilaDataBase));
 
-
-
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddControllersWithViews();
 
@@ -41,6 +41,8 @@ namespace RetrotapesRental
             builder.Services.AddScoped<IBookingRepository, BookingRepository>();
 
             var app = builder.Build();
+
+              
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

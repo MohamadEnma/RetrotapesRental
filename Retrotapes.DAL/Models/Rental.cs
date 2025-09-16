@@ -15,7 +15,7 @@ namespace Retrotapes.DAL.Models
 
         public DateTime? ReturnDate { get; set; }
 
-        public byte StaffId { get; set; }
+        public int StaffId { get; set; }
 
         public DateTime LastUpdate { get; set; }
 

@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Retrotapes.WEB.ViewModels.StaffUserViewModel>
+
+<h2>Staff Users</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Staff Name</th>
+            <th>User</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Staff.FirstName @item.Staff.LastName</td>
+                <td>@(item.User != null ? item.User.UserName : "No user")</td>
+            </tr>
+        }
+    </tbody>
+</table>
