@@ -31,9 +31,11 @@ namespace RetrotapesRental
 
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-            builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+            .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddRazorPages();
 
             //Add Repositories
             builder.Services.AddScoped<IActorRepository, ActorRepository>();
@@ -42,7 +44,31 @@ namespace RetrotapesRental
 
             var app = builder.Build();
 
-              
+            using (var scope = app.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+
+                // Get RoleManager and UserManager
+                var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+                var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
+                var sakilaContext = services.GetRequiredService<SakilaDbContext>();
+
+                // Seed roles
+                await RoleSeeder.SeedRolesAsync(roleManager);
+
+
+                
+                var sakilaStaffList = await sakilaContext.staff
+                    .Select(s => new Staff
+                    {
+                        Email = s.Email
+                      
+                    })
+                    .ToListAsync();
+
+                // Sync Sakila staff to Identity
+                await RoleSeeder.SyncSakilaStaffToIdentity(userManager, sakilaStaffList);
+            }
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
