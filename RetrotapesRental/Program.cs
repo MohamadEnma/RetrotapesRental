@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Retrotapes.DAL.Data;
 using Retrotapes.DAL.Models;
 using Retrotapes.DAL.Repositories;
 using Retrotapes.DAL.Seeder;
+using Retrotapes.DAL.Services;
 
 
 namespace RetrotapesRental
@@ -31,8 +33,9 @@ namespace RetrotapesRental
 
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-            builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders(); 
 
             builder.Services.ConfigureApplicationCookie(options =>
             {
@@ -47,6 +50,11 @@ namespace RetrotapesRental
             builder.Services.AddScoped<IActorRepository, ActorRepository>();
             builder.Services.AddScoped<IFilmRepository, FilmRepository>();
             builder.Services.AddScoped<IBookingRepository, BookingRepository>();
+
+            // Add EmailSender service
+            builder.Services.AddTransient<IEmailSender, EmailSender>();
+
+
 
             var app = builder.Build();
 
@@ -72,7 +80,7 @@ namespace RetrotapesRental
                     })
                     .ToListAsync();
 
-                // Sync Sakila staff to Identity
+                
                 await RoleSeeder.SyncSakilaStaffToIdentity(userManager, sakilaStaffList);
             }
 
@@ -93,6 +101,7 @@ namespace RetrotapesRental
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllerRoute(

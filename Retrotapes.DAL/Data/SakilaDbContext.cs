@@ -36,7 +36,7 @@ namespace Retrotapes.DAL.Data
         public DbSet<Staff> staff { get; set; }
         public DbSet<StaffList> StaffLists { get; set; }
         public DbSet<Store> Stores { get; set; }
-        public DbSet<FilmImage> FilmImages { get; set; }
+       
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
